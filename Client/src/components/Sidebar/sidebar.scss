@@ -1,0 +1,8 @@
+.sidebar {
+  flex: 0.15;
+  display: none;
+
+  @media (min-width: 624px) {
+    display: block;
+  }
+}

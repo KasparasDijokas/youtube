@@ -10,11 +10,11 @@ import Avatar from '@material-ui/core/Avatar';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import './header.scss';
 
+
 const Header = () => {
   const [searchbarState, setSearchBarState] = useState(false);
+  const [sidebarState, setSidebarState] = useState(false);
   const [input, setInput] = useState('');
-
-  console.log(input);
 
   // functions
   // toggle search bar state
@@ -24,18 +24,26 @@ const Header = () => {
     });
   };
 
+
+
+  const sidebarStateHandler = () => {
+    setSidebarState(prevState => {
+      return !sidebarState
+    })
+  }
+
   return (
     <div className="header">
-      <div className={!searchbarState ? `header__left` : `header__left hide`}>
-        <MenuIcon className="bars" />
+      <div className={`header__left ${!searchbarState  && `hide`}`}>
+        <MenuIcon className="bars" onClick={sidebarStateHandler}/>
         <img src={youtubeLogo} alt="youtube" className="youtube__image" />
       </div>
 
       <div
-        className={!searchbarState ? `header__center` : `header__center show`}
+        className={`header__center ${!searchbarState && `show`}`}
       >
         <ArrowBackIcon
-          className={!searchbarState ? `arrow__icon` : `arrow__icon show`}
+          className={`arrow__icon ${!searchbarState && `show`}`}
           onClick={() => showSearchbar()}
         />
         <input
@@ -46,11 +54,12 @@ const Header = () => {
           onChange={(e) => {
             setInput(e.target.value);
           }}
+          maxlength="20"
         />
         <SearchIcon className="header__searchBtn" />
       </div>
 
-      <div className={!searchbarState ? `header__right` : `header__right hide`}>
+      <div className={`header__right ${!searchbarState && `hide`}`}>
         <SearchIcon
           className="searchBtn__mobile"
           onClick={() => showSearchbar()}
