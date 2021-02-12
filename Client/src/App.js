@@ -1,4 +1,4 @@
-import './app.scss';
+import './App.scss';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Videos from './components/Videos/Videos';

@@ -57,6 +57,11 @@ const Header = ({ userSearchHandler }) => {
             onChange={(e) => {
               setUserInput(e.target.value);
             }}
+            onKeyPress={(event) => {
+              if (event.key === 'Enter') {
+                validate(userInput);
+              }
+            }}
           />
           <SearchIcon
             onClick={() => validate(userInput)}
