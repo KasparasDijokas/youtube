@@ -64,6 +64,14 @@ $icon-color: #5c5858;
       cursor: pointer;
       fill: #5c5858;
       font-size: 1.6rem !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__inputContainer {
+      display: flex;
+      position: relative;
     }
   }
 
@@ -114,5 +122,25 @@ $icon-color: #5c5858;
     .arrow__icon.show {
       display: block;
     }
+  }
+}
+
+.error {
+  position: absolute !important;
+  bottom: -12px;
+  left: 2px;
+  color: red;
+  font-size: 12px;
+  opacity: 0;
+  transition: all 0.6s ease;
+  margin-top: 6px;
+  position: relative;
+
+  &.show {
+    position: absolute !important;
+    bottom: -18px;
+    left: 2px;
+    font-size: 12px;
+    opacity: 1;
   }
 }
