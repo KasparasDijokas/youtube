@@ -9,6 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { youtube_key } from '../keys';
 import axios from 'axios';
 import { animateScroll } from 'react-scroll';
+import uuid from 'react-uuid'
 
 const opts = {
   height: '165',
@@ -43,7 +44,7 @@ const Watch = (props) => {
   const loadMoreVideos = () => {
     axios
       .get(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${keyword}&${
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${keyword}&${
           nextPageToken && `pageToken=${nextPageToken}`
         }&key=${youtube_key}`
       )
@@ -92,14 +93,14 @@ const Watch = (props) => {
                         description: `${video.snippet.description}}`,
                       },
                     }}
-                    key={video.id.videoId}
+                    key={uuid()}
                   >
                     <VideoCard
                       image={video.snippet.thumbnails.default.url}
                       channelLogo={video.snippet.thumbnails.default.url}
                       videoTitle={video.snippet.title}
                       channelName={video.snippet.channelTitle}
-                      key={video.id.videoId}
+                      key={uuid()}
                     />
                   </Link>
                 );
